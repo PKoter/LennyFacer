@@ -1,7 +1,6 @@
 using System;
 using System.Windows.Forms;
 using System.ComponentModel;
-using System.Xml.Serialization;
 using System.Runtime.InteropServices;
 
 namespace BW
@@ -38,9 +37,7 @@ namespace BW
         private bool control;
         private bool alt;
 
-		[XmlIgnore]
 		private int id;
-		[XmlIgnore]
 		private bool registered;
 		private IntPtr handle;
 
@@ -54,10 +51,10 @@ namespace BW
 		public Hotkey(Keys keyCode, bool shift, bool control, bool alt, bool windows)
 		{
 			// Assign properties
-			this.KeyCode = keyCode;
-			this.Shift = shift;
-			this.Control = control;
-			this.Alt = alt;
+			KeyCode = keyCode;
+			Shift = shift;
+			Control = control;
+			Alt = alt;
 
 			// Register us as a message filter
 			Application.AddMessageFilter(this);

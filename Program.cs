@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace BW
@@ -11,10 +12,17 @@ namespace BW
 		[STAThread]
 		static void Main()
 		{
-			Application.EnableVisualStyles();
-			Application.SetCompatibleTextRenderingDefault(false);
-			ApplicationContext context = new LennyApplicationContext();
-			Application.Run(context);
+			bool single;
+			using (Mutex me = new Mutex(true, "LennyFacer", out single))
+			{
+				if (single)
+				{
+					Application.EnableVisualStyles();
+					Application.SetCompatibleTextRenderingDefault(false);
+					ApplicationContext context = new LennyApplicationContext();
+					Application.Run(context);
+				}
+			}
 		}
 	}
 }
