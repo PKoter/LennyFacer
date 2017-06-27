@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LennyFacer
+namespace BW
 {
 	static class Program
 	{
@@ -16,7 +13,8 @@ namespace LennyFacer
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new Form1());
+			ApplicationContext context = new LennyApplicationContext();
+			Application.Run(context);
 		}
 	}
 }
